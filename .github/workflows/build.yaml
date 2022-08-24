@@ -10,6 +10,8 @@ jobs:
     uses: bitcompat/base/.github/workflows/build.yaml@main
     with:
       name: main
+      build-args: |
+        RUN_TESTS=1
       image_tag: |
         latest
         0.16-20220414-bullseye-r1

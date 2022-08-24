@@ -7,6 +7,7 @@ ARG PACKAGE=json-c
 ARG TARGET_DIR=common
 ARG VERSION=0.16
 ARG REF=json-c-0.16-20220414
+ARG RUN_TESTS
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN install_packages ca-certificates curl git build-essential g++ cmake tar gzip bzip2 pkg-config
