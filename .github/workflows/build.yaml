@@ -14,7 +14,7 @@ jobs:
         RUN_TESTS=1
       image_tag: |
         latest
-        0.16-20220414-bullseye-r1
+        0.16-20220414-bullseye-r1 # renovate: datasource=github-tags depName=json-c/json-c
         0.16-bullseye-r1
         0.16-bullseye
         0.16

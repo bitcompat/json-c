@@ -1,0 +1,49 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": [
+        "^Dockerfile$"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>.+?))?\\nARG.+?=\\s['\"]?(?<currentValue>.+?)['\"]?\\n"
+      ],
+      "versioningTemplate": "{{#if versioning}}{{versioning}}{{else}}semver{{/if}}",
+      "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{/if}}"
+    },
+    {
+      "fileMatch": [
+        "^\\.github/workflows/.+\\.ya?ml$"
+      ],
+      "matchStrings": [
+        "\\s+['\"]?(?<currentValue>\\d+\\.\\d+-\\d+)-[a-z]+-r\\d+['\"]?\\s# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>.+?))?\\n",
+        "\\s+['\"]?(?<currentValue>\\d+\\.\\d+)-[a-z]+-r\\d+['\"]?\\s# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>.+?))?\\n",
+        "\\s+['\"]?(?<currentValue>\\d+\\.\\d+)-[a-z]+['\"]?\\s# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>.+?))?\\n",
+        "\\s+['\"]?(?<currentValue>\\d+\\.\\d+)['\"]?\\s# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>.+?))?\\n"
+      ],
+      "versioningTemplate": "{{#if versioning}}{{versioning}}{{else}}semver{{/if}}",
+      "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{/if}}"
+    }
+  ],
+  "packageRules": [
+    {
+      "description": "Require dashboard approval for major updates",
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    },
+    {
+      "matchDatasources": ["docker"],
+      "rangeStrategy": "replace",
+      "stabilityDays": 1
+    },
+    {
+      "matchDatasources": ["github-tags"],
+      "matchPackageNames": ["json-c/json-c"],
+      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)(?:-(?<patch>\\d+))?(?:-.*)?$",
+      "extractVersion": "^json-c-(?<version>.+)$"
+    }
+  ]
+}
