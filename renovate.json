@@ -19,7 +19,10 @@
         "^\\.github/workflows/.+\\.ya?ml$"
       ],
       "matchStrings": [
-        "\\s+['\"]?(?<currentValue>.+?)['\"]?\\s# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?(?: extractVersion=(?<extractVersion>.+?))?\\n"
+        "\\s+['\"]?(?<currentValue>\\d+\\.\\d+-\\d+)-[a-z]+-r\\d+['\"]?\\s# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?(?: extractVersion=(?<extractVersion>.+?))?\\n",
+        "\\s+['\"]?(?<currentValue>\\d+\\.\\d+)-[a-z]+-r\\d+['\"]?\\s# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?(?: extractVersion=(?<extractVersion>.+?))?\\n",
+        "\\s+['\"]?(?<currentValue>\\d+\\.\\d+)-[a-z]+['\"]?\\s# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?(?: extractVersion=(?<extractVersion>.+?))?\\n",
+        "\\s+['\"]?(?<currentValue>\\d+\\.\\d+)['\"]?\\s# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?(?: extractVersion=(?<extractVersion>.+?))?\\n"
       ],
       "versioningTemplate": "{{#if versioning}}{{versioning}}{{else}}semver{{/if}}",
       "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{/if}}"

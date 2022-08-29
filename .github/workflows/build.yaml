@@ -14,8 +14,8 @@ jobs:
         RUN_TESTS=1
       image_tag: |
         latest
-        0.16-20220414-bullseye-r1 # renovate: datasource=github-tags depName=json-c/json-c extractVersion=^json-c-(?<major>\d+)\.(?<minor>\d+)-(?<patch>\d+)$
-        0.16-bullseye-r1 # renovate: datasource=github-tags depName=json-c/json-c extractVersion=^json-c-(?<major>\d+)\.(?<minor>\d+)-(?<patch>\d+)$
-        0.16-bullseye # renovate: datasource=github-tags depName=json-c/json-c extractVersion=^json-c-(?<major>\d+)\.(?<minor>\d+)-(?<patch>\d+)$
-        0.16 # renovate: datasource=github-tags depName=json-c/json-c extractVersion=^json-c-(?<major>\d+)\.(?<minor>\d+)-(?<patch>\d+)$
+        0.15-20220414-bullseye-r1 # renovate: datasource=github-tags depName=json-c/json-c
+        0.15-bullseye-r1 # renovate: datasource=github-tags depName=json-c/json-c versioning=^(?<major>\d+)\.(?<minor>\d+)(?:-.*)?$
+        0.15-bullseye # renovate: datasource=github-tags depName=json-c/json-c versioning=^(?<major>\d+)\.(?<minor>\d+)(?:-.*)?$
+        0.15 # renovate: datasource=github-tags depName=json-c/json-c versioning=^(?<major>\d+)\.(?<minor>\d+)(?:-.*)?$
     secrets: inherit
