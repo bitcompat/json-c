@@ -9,9 +9,9 @@
         "^Dockerfile$"
       ],
       "matchStrings": [
-        "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>.+?))?\\nARG.+?=\\s['\"]?(?<currentValue>.+?)['\"]?\\n"
+        "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>.+?))?\\nARG.*=\\s*['\"]?json-c-(?<currentValue>.+?)['\"]?\\n"
       ],
-      "versioningTemplate": "{{#if versioning}}{{versioning}}{{else}}semver{{/if}}",
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}",
       "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{/if}}"
     },
     {
@@ -19,12 +19,11 @@
         "^\\.github/workflows/.+\\.ya?ml$"
       ],
       "matchStrings": [
-        "\\s+['\"]?(?<currentValue>\\d+\\.\\d+-\\d+)-[a-z]+-r\\d+['\"]?\\s# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>.+?))?\\n",
-        "\\s+['\"]?(?<currentValue>\\d+\\.\\d+)-[a-z]+-r\\d+['\"]?\\s# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>.+?))?\\n",
-        "\\s+['\"]?(?<currentValue>\\d+\\.\\d+)-[a-z]+['\"]?\\s# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>.+?))?\\n",
-        "\\s+['\"]?(?<currentValue>\\d+\\.\\d+)['\"]?\\s# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>.+?))?\\n"
+        "\\s+['\"]?(?<currentValue>\\d+\\.\\d+-\\d+)(?:-(?<compatibility>.*?)(?:-r(?<build>\\d+)))['\"]?\\s# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>.+?))?\\n",
+        "\\s+['\"]?(?<currentValue>\\d+\\.\\d+)(?:-(?<compatibility>.*?)(?:-r(?<build>\\d+)))['\"]?\\s# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>.+?))?\\n",
+        "\\s+['\"]?(?<currentValue>.+?)['\"]?\\s# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>.+?))?\\n"
       ],
-      "versioningTemplate": "{{#if versioning}}{{versioning}}{{else}}semver{{/if}}",
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}",
       "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{/if}}"
     }
   ],
@@ -42,7 +41,6 @@
     {
       "matchDatasources": ["github-tags"],
       "matchPackageNames": ["json-c/json-c"],
-      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)(?:-(?<patch>\\d+))?(?:-.*)?$",
       "extractVersion": "^json-c-(?<version>.+)$"
     }
   ]
