@@ -12,7 +12,7 @@ jobs:
       name: main
       build-args: |
         RUN_TESTS=1
-      version: 0.16-20220414 # renovate: datasource=github-tags depName=json-c/json-c
+      version: 0.17-20230812 # renovate: datasource=github-tags depName=json-c/json-c
       latest: true
       major_only_tag: true
     secrets: inherit
