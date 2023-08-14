@@ -19,9 +19,7 @@
         "^\\.github/workflows/.+\\.ya?ml$"
       ],
       "matchStrings": [
-        "\\s+['\"]?(?<currentValue>\\d+\\.\\d+-\\d+)(?:-(?<compatibility>.*?)(?:-r(?<build>\\d+)))['\"]?\\s# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>.+?))?\\n",
-        "\\s+['\"]?(?<currentValue>\\d+\\.\\d+)(?:-(?<compatibility>.*?)(?:-r(?<build>\\d+)))['\"]?\\s# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>.+?))?\\n",
-        "\\s+['\"]?(?<currentValue>.+?)['\"]?\\s# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>.+?))?\\n"
+        ".+:\\s+['\"]?(?<currentValue>.+?)['\"]?\\s# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>.+?))?\\n"
       ],
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}",
       "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{/if}}"
@@ -41,7 +39,8 @@
     {
       "matchDatasources": ["github-tags"],
       "matchPackageNames": ["json-c/json-c"],
-      "extractVersion": "^json-c-(?<version>.+)$"
+      "extractVersion": "^json-c-(?<version>.+)$",
+      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)-(?<patch>\\d+)$"
     }
   ]
 }

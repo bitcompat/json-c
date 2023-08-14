@@ -5,9 +5,9 @@ FROM docker.io/bitnami/minideb:bullseye as builder
 
 ARG PACKAGE=json-c
 ARG TARGET_DIR=common
-ARG VERSION=0.16
-# renovate: datasource=github-tags depName=json-c/json-c versioning=regex:^(?<major>\d+)\.(?<minor>\d+)-(?<patch>\d+)$
-ARG REF=json-c-0.16-20220414
+# renovate: datasource=github-tags depName=json-c/json-c
+ARG BUILD_VERSION=0.16-20220414
+ARG REF=json-c-$BUILD_VERSION
 ARG RUN_TESTS
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
