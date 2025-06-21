@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.4
+# syntax=docker/dockerfile:1.17
 ARG RUN_TESTS=0
 
 FROM docker.io/bitnami/minideb:bullseye as builder
