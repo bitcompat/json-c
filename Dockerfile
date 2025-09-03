@@ -26,6 +26,9 @@ RUN <<EOT bash
       make test USE_VALGRIND=0
     fi
     make install
+
+    mkdir -p /opt/bitnami/${TARGET_DIR}/licenses
+    cp -f ../json-c/COPYING /opt/bitnami/${TARGET_DIR}/licenses/${PACKAGE}-${VERSION}.txt
 EOT
 
 FROM docker.io/bitnami/minideb:bullseye as stage-0
