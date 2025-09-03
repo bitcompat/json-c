@@ -15,4 +15,5 @@ jobs:
       version: 0.18-20240915 # renovate: datasource=github-tags depName=json-c/json-c
       latest: true
       major_only_tag: true
+      revision: 2
     secrets: inherit
