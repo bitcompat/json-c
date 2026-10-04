@@ -1,12 +1,12 @@
 # syntax=docker/dockerfile:1.27
 ARG RUN_TESTS=0
 
-FROM docker.io/bitnami/minideb:bullseye as builder
+FROM docker.io/bitnami/minideb:trixie as builder
 
 ARG PACKAGE=json-c
 ARG TARGET_DIR=common
 # renovate: datasource=github-tags depName=json-c/json-c
-ARG BUILD_VERSION=0.16-20220414
+ARG BUILD_VERSION=0.19-20260627
 ARG REF=json-c-$BUILD_VERSION
 ARG RUN_TESTS
 
@@ -31,6 +31,6 @@ RUN <<EOT bash
     cp -f ../json-c/COPYING /opt/bitnami/${TARGET_DIR}/licenses/${PACKAGE}-${BUILD_VERSION}.txt
 EOT
 
-FROM docker.io/bitnami/minideb:bullseye as stage-0
+FROM docker.io/bitnami/minideb:trixie as stage-0
 
 COPY --link --from=builder /opt/bitnami /opt/bitnami
